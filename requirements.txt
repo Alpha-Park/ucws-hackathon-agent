@@ -1,0 +1,7 @@
+Flask>=2.0.0
+ElasticSearch==8.17.1
+adk
+google-adk
+google-genai
+google-api-core
+Flask[async]

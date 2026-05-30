@@ -1,0 +1,82 @@
+[
+  {
+    "id": "prod_001",
+    "name": "AI Smart Speaker Pro",
+    "category": "AI Gadgets",
+    "price": 149.99,
+    "description": "Voice-controlled smart speaker with advanced AI assistant",
+    "tags": ["smart home", "ai", "speaker", "voice control"],
+    "rating": 4.7,
+    "image_url": "https://genpark.ai/images/speaker.jpg"
+  },
+  {
+    "id": "prod_002",
+    "name": "Portable Solar Charger",
+    "category": "Electronics",
+    "price": 79.99,
+    "description": "Eco-friendly solar power bank for outdoor adventures",
+    "tags": ["eco-friendly", "outdoor", "charger", "portable"],
+    "rating": 4.5,
+    "image_url": "https://genpark.ai/images/solar.jpg"
+  },
+  {
+    "id": "prod_003",
+    "name": "Ergonomic Desk Chair",
+    "category": "Home & Living",
+    "price": 299.99,
+    "description": "Premium ergonomic chair with lumbar support",
+    "tags": ["office", "ergonomic", "chair", "work from home"],
+    "rating": 4.8,
+    "image_url": "https://genpark.ai/images/chair.jpg"
+  },
+  {
+    "id": "prod_004",
+    "name": "Smart Pet Feeder",
+    "category": "Pet Supplies",
+    "price": 89.99,
+    "description": "Automated pet feeder with app control and camera",
+    "tags": ["pet", "smart home", "automated", "feeding"],
+    "rating": 4.6,
+    "image_url": "https://genpark.ai/images/petfeeder.jpg"
+  },
+  {
+    "id": "prod_005",
+    "name": "Minimalist Leather Wallet",
+    "category": "Fashion",
+    "price": 49.99,
+    "description": "Slim RFID-blocking leather wallet",
+    "tags": ["fashion", "wallet", "leather", "minimalist"],
+    "rating": 4.4,
+    "image_url": "https://genpark.ai/images/wallet.jpg"
+  },
+  {
+    "id": "prod_006",
+    "name": "Robot Vacuum Cleaner",
+    "category": "Home & Living",
+    "price": 399.99,
+    "description": "AI-powered robot vacuum with mapping and scheduling",
+    "tags": ["smart home", "cleaning", "robot", "automated"],
+    "rating": 4.7,
+    "image_url": "https://genpark.ai/images/vacuum.jpg"
+  },
+  {
+    "id": "prod_007",
+    "name": "Wireless Noise-Canceling Earbuds",
+    "category": "Electronics",
+    "price": 199.99,
+    "description": "Premium earbuds with ANC and 30-hour battery life",
+    "tags": ["audio", "wireless", "noise-canceling", "earbuds"],
+    "rating": 4.8,
+    "image_url": "https://genpark.ai/images/earbuds.jpg"
+  },
+  {
+    "id": "prod_008",
+    "name": "Smart Garden Kit",
+    "category": "Lifestyle",
+    "price": 129.99,
+    "description": "Indoor smart garden with automated watering and LED grow lights",
+    "tags": ["garden", "smart home", "plants", "indoor"],
+    "rating": 4.5,
+    "image_url": "https://genpark.ai/images/garden.jpg"
+  }
+]

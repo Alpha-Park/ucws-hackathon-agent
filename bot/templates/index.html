@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GenPark Social Shopping Agent</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <header class="topNav">
+          <div class="brandCluster">
+            <div class="brandMark">G</div>
+            <div>
+              <strong>GenPark Social Shopping Agent</strong>
+              <span>UCWS Singapore Hackathon 2026</span>
+            </div>
+          </div>
+          <div class="status" id="healthStatus">Checking runtime...</div>
+        </header>
+
+        <div class="heroInner">
+          <p class="eyebrow">Agent Track Demo</p>
+          <h1>Find the gift. Signal the crowd.</h1>
+          <p class="heroCopy">A shopping operator that ranks products, saves the shortlist, drafts a GenPark Circle post, and waits for your confirmation before publishing.</p>
+        </div>
+      </section>
+
+      <section class="commandDock" aria-label="Agent command">
+        <div class="commandTop">
+          <div>
+            <p class="sectionKicker">Live command deck</p>
+            <h2>Describe the buyer, budget, and social action.</h2>
+          </div>
+          <div class="metricStrip" aria-label="Agent run metrics">
+            <div>
+              <span id="metricProducts">0</span>
+              <small>ranked</small>
+            </div>
+            <div>
+              <span id="metricSaved">0</span>
+              <small>saved</small>
+            </div>
+            <div>
+              <span id="metricTools">0</span>
+              <small>tools</small>
+            </div>
+            <div>
+              <span id="metricState">idle</span>
+              <small>state</small>
+            </div>
+          </div>
+        </div>
+
+        <form id="chatForm" class="commandForm">
+          <textarea id="messageInput" rows="3" placeholder="Describe the buyer, budget, and social action.">I need a globally useful gift for a remote worker under $220. Compare the best options, save the shortlist, and draft a Circle post asking the community which one I should buy.</textarea>
+          <button type="submit" id="sendButton">Run Agent</button>
+        </form>
+
+        <div class="examples" aria-label="Example prompts">
+          <button data-prompt="I need a globally useful gift for a remote worker under $220. Compare the best options, save the shortlist, and draft a Circle post asking the community which one I should buy.">Demo Day prompt</button>
+          <button data-prompt="Recommend smart home products under $160, save the shortlist, and prepare a shareable post.">Smart home</button>
+          <button data-prompt="Show my collection.">Show collection</button>
+        </div>
+      </section>
+
+      <section class="resultsLayout">
+        <section class="storyColumn">
+          <section class="answerBlock" aria-live="polite">
+            <div class="sectionHeader">
+              <div>
+                <p class="sectionKicker">Decision signal</p>
+                <h2>Agent Output</h2>
+              </div>
+              <button type="button" id="confirmButton" class="secondary" hidden>Confirm Post</button>
+            </div>
+            <pre id="answerText" class="answerText">Run the Demo Day prompt to see a ranked decision brief, saved shortlist, execution trace, and Circle draft.</pre>
+          </section>
+
+          <section class="draftBlock">
+            <div class="sectionHeader">
+              <div>
+                <p class="sectionKicker">Social transmit</p>
+                <h2>Circle Draft</h2>
+              </div>
+            </div>
+            <div id="draftPost" class="draft emptyDraft">The approved post draft will appear here.</div>
+          </section>
+        </section>
+
+        <aside class="receiptColumn" aria-label="Agent trace">
+          <div class="receiptHeader">
+            <p class="sectionKicker">Execution telemetry</p>
+            <h2>Trace</h2>
+          </div>
+          <ol id="planList" class="planList"></ol>
+          <div class="traceDivider"></div>
+          <div id="toolCalls" class="toolCalls"></div>
+        </aside>
+      </section>
+
+      <section class="productSection">
+        <div class="sectionHeader">
+          <div>
+            <p class="sectionKicker">Shortlist</p>
+            <h2>Product Picks</h2>
+          </div>
+          <span id="productCount" class="countPill">0 items</span>
+        </div>
+        <div id="products" class="productGrid"></div>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

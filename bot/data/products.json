@@ -4,10 +4,10 @@
     "name": "AI Smart Speaker Pro",
     "category": "AI Gadgets",
     "price": 149.99,
-    "description": "Voice-controlled smart speaker with advanced AI assistant",
-    "tags": ["smart home", "ai", "speaker", "voice control"],
+    "description": "Voice-controlled smart speaker with advanced AI assistant for home offices",
+    "tags": ["smart home", "ai", "speaker", "voice control", "remote work", "home office"],
     "rating": 4.7,
-    "image_url": "https://genpark.ai/images/speaker.jpg"
+    "image_url": "https://images.unsplash.com/photo-1543512214-318c7553f230?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_002",
@@ -17,17 +17,17 @@
     "description": "Eco-friendly solar power bank for outdoor adventures",
     "tags": ["eco-friendly", "outdoor", "charger", "portable"],
     "rating": 4.5,
-    "image_url": "https://genpark.ai/images/solar.jpg"
+    "image_url": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_003",
     "name": "Ergonomic Desk Chair",
     "category": "Home & Living",
     "price": 299.99,
-    "description": "Premium ergonomic chair with lumbar support",
-    "tags": ["office", "ergonomic", "chair", "work from home"],
+    "description": "Premium ergonomic chair with lumbar support for remote workers",
+    "tags": ["office", "ergonomic", "chair", "work from home", "remote worker"],
     "rating": 4.8,
-    "image_url": "https://genpark.ai/images/chair.jpg"
+    "image_url": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_004",
@@ -37,7 +37,7 @@
     "description": "Automated pet feeder with app control and camera",
     "tags": ["pet", "smart home", "automated", "feeding"],
     "rating": 4.6,
-    "image_url": "https://genpark.ai/images/petfeeder.jpg"
+    "image_url": "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_005",
@@ -47,7 +47,7 @@
     "description": "Slim RFID-blocking leather wallet",
     "tags": ["fashion", "wallet", "leather", "minimalist"],
     "rating": 4.4,
-    "image_url": "https://genpark.ai/images/wallet.jpg"
+    "image_url": "https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_006",
@@ -57,26 +57,26 @@
     "description": "AI-powered robot vacuum with mapping and scheduling",
     "tags": ["smart home", "cleaning", "robot", "automated"],
     "rating": 4.7,
-    "image_url": "https://genpark.ai/images/vacuum.jpg"
+    "image_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_007",
     "name": "Wireless Noise-Canceling Earbuds",
     "category": "Electronics",
     "price": 199.99,
-    "description": "Premium earbuds with ANC and 30-hour battery life",
-    "tags": ["audio", "wireless", "noise-canceling", "earbuds"],
+    "description": "Premium earbuds with ANC and 30-hour battery life for calls and focused remote work",
+    "tags": ["audio", "wireless", "noise-canceling", "earbuds", "remote worker", "calls", "focus"],
     "rating": 4.8,
-    "image_url": "https://genpark.ai/images/earbuds.jpg"
+    "image_url": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80"
   },
   {
     "id": "prod_008",
     "name": "Smart Garden Kit",
     "category": "Lifestyle",
     "price": 129.99,
-    "description": "Indoor smart garden with automated watering and LED grow lights",
-    "tags": ["garden", "smart home", "plants", "indoor"],
+    "description": "Indoor smart garden with automated watering and LED grow lights for desk wellness",
+    "tags": ["garden", "smart home", "plants", "indoor", "desk", "wellness", "remote worker"],
     "rating": 4.5,
-    "image_url": "https://genpark.ai/images/garden.jpg"
+    "image_url": "https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=900&q=80"
   }
 ]

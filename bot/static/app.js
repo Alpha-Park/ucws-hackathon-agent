@@ -74,9 +74,11 @@ function renderResponse(data) {
   if (data.draft_post) {
     draftPost.hidden = false;
     draftPost.textContent = data.draft_post;
+    draftPost.classList.remove("emptyDraft");
   } else if (data.post?.content) {
     draftPost.hidden = false;
     draftPost.textContent = data.post.content;
+    draftPost.classList.remove("emptyDraft");
   } else {
     draftPost.hidden = true;
     draftPost.textContent = "";
@@ -170,3 +172,9 @@ async function loadHealth() {
 }
 
 loadHealth();
+
+if (new URLSearchParams(window.location.search).get("demo") === "1") {
+  window.addEventListener("load", () => {
+    setTimeout(() => runAgent(input.value), 300);
+  });
+}

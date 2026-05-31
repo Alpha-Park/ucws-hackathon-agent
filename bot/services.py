@@ -61,7 +61,7 @@ class AgentService:
             "Search the product catalog with budget-aware ranking.",
             "Compare candidates and explain the tradeoffs.",
             "Save the strongest shortlist to the user's collection.",
-            "Draft a Circle post and wait for explicit confirmation before publishing.",
+            "Draft an approval-gated Circle community handoff and wait for explicit confirmation.",
         ]
 
         tool_calls: list[dict[str, Any]] = []
@@ -121,7 +121,7 @@ class AgentService:
                     "tool": "draft_circle_post",
                     "input": {"requires_confirmation": True},
                     "status": "awaiting_confirmation",
-                    "summary": "Circle post drafted but not published",
+                    "summary": "Approval-gated Circle handoff drafted",
                 }
             )
 
@@ -140,7 +140,7 @@ class AgentService:
             "collection": self.store.list_collection(user_id),
             "draft_post": draft_post,
             "pending_action": pending_action,
-            "next_action": "Reply `confirm post` to publish the Circle draft." if wants_circle else "Ask for a Circle post when you want a shareable draft.",
+            "next_action": "Reply `confirm post` to approve the Circle draft. Publishing only runs when GenPark browser credentials are configured." if wants_circle else "Ask for a Circle handoff when you want a shareable community draft.",
         }
 
     def _execute_pending_action(
@@ -165,10 +165,10 @@ class AgentService:
         self.store.clear_pending_action(user_id, session_id)
 
         if posted:
-            answer = "Confirmed. The Circle post was published and recorded in the local audit log."
+            answer = "Confirmed. The approved Circle handoff was published and recorded in the local audit log."
         else:
             answer = (
-                "I saved the approved Circle draft, but did not claim it was posted because GenPark "
+                "I saved the approved Circle handoff draft, but did not claim it was posted because GenPark "
                 "browser credentials or Playwright are not fully configured."
             )
 
@@ -257,5 +257,5 @@ class AgentService:
         if products:
             answer += "\n\nI saved the top candidates to the local collection so the workflow is reproducible."
         if wants_circle:
-            answer += "\n\nI also drafted a Circle post and am waiting for explicit confirmation before publishing."
+            answer += "\n\nI also drafted an approval-gated Circle community post and am waiting for explicit confirmation."
         return answer

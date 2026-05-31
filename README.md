@@ -1,15 +1,19 @@
 # GenPark Social Shopping Agent
 
+![GenPark Social Shopping Agent demo](docs/demo-screenshot.png)
+
 UCWS Singapore Hackathon 2026 Agent Track submission.
 
-GenPark Social Shopping Agent turns a shopping intent into an executable social-shopping workflow: it parses budget and needs, searches a product catalog, ranks candidates, saves a shortlist, drafts a Circle post, and waits for explicit confirmation before any publishing side effect.
+This is not a shopping chatbot. It is a social shopping operator that turns intent into a saved shortlist and an approval-gated community post.
+
+GenPark Social Shopping Agent turns a shopping intent into an executable social-shopping workflow: it parses budget and needs, searches a product catalog, ranks candidates, saves a shortlist, drafts a Circle social handoff, and waits for explicit confirmation before any publishing side effect.
 
 ## Why This Is An Agent
 
-- Goal-directed workflow: shopping need -> shortlist -> saved collection -> shareable Circle draft.
-- Tool use: search, ranking, collection persistence, Circle publishing.
+- Goal-directed workflow: shopping need -> shortlist -> saved collection -> approval-gated Circle handoff.
+- Tool use: search, ranking, collection persistence, Circle draft handoff, and optional publishing.
 - Memory: per-user collection and pending approval state are stored in SQLite.
-- Safety: publishing requires `confirm post`; missing GenPark browser setup returns `requires_setup` instead of fake success.
+- Safety: the community post remains a draft until `confirm post`; missing GenPark browser setup returns `requires_setup` instead of fake success.
 - Evaluability: every response includes the plan, tool calls, products, constraints, draft, and pending action.
 
 ## Demo Flow
@@ -26,9 +30,9 @@ Expected behavior:
 2. It searches and ranks products.
 3. It saves the top candidates to the local collection.
 4. It drafts a Circle post.
-5. It waits for `confirm post` before trying to publish.
+5. It waits for `confirm post` before any publish attempt.
 
-If GenPark credentials or Playwright are not configured, the confirmed post is saved as an approved draft with `drafted_requires_setup`. This is intentional: the project does not claim a real side effect happened unless it did.
+If GenPark credentials or Playwright are not configured, the confirmed handoff is saved as an approved draft with `drafted_requires_setup`. This is intentional: the project does not claim a real side effect happened unless it did.
 
 ## Run Locally
 
@@ -98,7 +102,7 @@ bot/
 Copy `.env.example` to `.env`.
 
 - `GOOGLE_API_KEY`: needed only for Google ADK runtime usage.
-- `GENPARK_EMAIL` and `GENPARK_PASSWORD`: needed for browser-based Circle publishing.
+- `GENPARK_EMAIL` and `GENPARK_PASSWORD`: needed only for optional browser-based Circle publishing after approval.
 - `GENPARK_AGENT_DB`: optional SQLite path.
 
 ## Tests
@@ -111,6 +115,6 @@ python -m unittest discover -s tests
 
 - Product data is a deterministic local catalog for reproducible judging.
 - Product images use public product-lifestyle imagery until a real GenPark catalog feed is connected.
-- Circle posting uses browser automation and depends on GenPark UI stability.
+- Circle handoff is demo-safe by default: it drafts and records the approved post, while optional publishing uses browser automation and depends on GenPark UI stability.
 - Image attachment for Circle drafts is not implemented yet.
 - For production, replace the catalog with a real GenPark API/search index and move auth behind a proper user session.

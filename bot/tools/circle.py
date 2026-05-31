@@ -1,4 +1,4 @@
-"""Circle Posting Tool - draft and publish content to GenPark Circle."""
+"""Circle social handoff tool - publish approved content to GenPark Circle."""
 
 from typing import Optional
 
@@ -10,7 +10,7 @@ def post_to_circle(
     image_url: Optional[str] = None,
 ) -> dict:
     """
-    Post content to GenPark Circle.
+    Publish approved content to GenPark Circle.
 
     This function never returns a fake success. If browser automation or
     credentials are missing, it returns a setup-required result so the agent can

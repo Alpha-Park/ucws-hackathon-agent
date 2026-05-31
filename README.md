@@ -8,6 +8,13 @@ This is not a shopping chatbot. It is a social shopping operator that turns inte
 
 GenPark Social Shopping Agent turns a shopping intent into an executable social-shopping workflow: it parses budget and needs, searches a product catalog, ranks candidates, saves a shortlist, drafts a Circle social handoff, and waits for explicit confirmation before any publishing side effect.
 
+## Judge Quick Start
+
+- Submission brief: [SUBMISSION.md](SUBMISSION.md)
+- Demo screenshot: [docs/demo-screenshot.png](docs/demo-screenshot.png)
+- One-command target: run the Flask app, open `http://127.0.0.1:3000`, click `Run Agent`
+- Best demo prompt is prefilled in the UI
+
 ## Why This Is An Agent
 
 - Goal-directed workflow: shopping need -> shortlist -> saved collection -> approval-gated Circle handoff.

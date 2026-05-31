@@ -23,20 +23,20 @@ GenPark Social Shopping Agent converts one natural-language shopping intent into
 
 - It executes a multi-step workflow rather than returning a single chat answer.
 - It uses tools for search, ranking, collection persistence, Circle handoff, and optional publishing.
-- It keeps state in SQLite: sessions, collections, pending approvals, posts, and traces.
+- It keeps state for sessions, collections, pending approvals, posts, and traces.
 - It exposes its plan and tool calls for auditability.
 - It treats external side effects safely: no fake publish success.
 
 ## 60-Second Demo Script
 
-1. Open the app and point to the prefilled prompt.
+1. Open the public Vercel demo and point to the prefilled prompt.
 2. Click `Run Agent`.
 3. Show the telemetry: ranked products, saved items, tool count, pending state.
 4. Show the decision brief: products are ranked with budget and intent reasons.
 5. Show the Circle draft: the agent turns the shortlist into a community handoff.
 6. Show the execution receipt: plan and tool calls are visible.
 7. Click `Approve Draft`.
-8. Explain that without GenPark browser credentials, the approved draft is saved as `drafted_requires_setup` instead of pretending it was posted.
+8. Explain that without a Circle publishing webhook, the approved draft is saved as `drafted_requires_setup` instead of pretending it was posted.
 
 ## Suggested Demo Prompt
 
@@ -54,32 +54,31 @@ I need a globally useful gift for a remote worker under $220. Compare the best o
 
 ### AI Evaluation
 
-- Runnable Flask app with deterministic local catalog.
+- Runnable Next.js app deployable on Vercel.
 - Structured API responses with plan, tool calls, products, collection, draft, and pending action.
 - Tests cover budget inference, ranking, pending approvals, and no fake publish.
-- README includes screenshot, run steps, architecture, API shape, and limitations.
+- README includes screenshot, run steps, Vercel deployment steps, architecture, API shape, and limitations.
 
 ### Expert Judges
 
 - Real product value: reduces shopping decision friction and adds social validation.
-- Technical execution: stateful agent workflow, persistent collection, approval-gated side effects.
+- Technical execution: stateful agent workflow, saved collection, approval-gated side effects.
 - Commercial potential: can become a GenPark-native shopping operator tied to catalog, Circle, and user collections.
 - Global scalability: buyer intent, gifting, and community validation are global user behaviors.
 
 ## What Is Real Today
 
+- Next.js public web app and API routes
 - Agent workflow orchestration
 - Product ranking over a deterministic catalog
-- SQLite-backed sessions, collections, approvals, posts, and traces
+- Session collection, pending approval, post, and trace state
 - Approval-gated Circle handoff
-- Optional browser publishing path when credentials are configured
-- Web UI and API
+- Optional webhook path when publishing infrastructure is configured
 
 ## What Would Make It Production-Grade
 
 - Replace local catalog with GenPark product/search API.
 - Use real user authentication and account-linked collections.
-- Replace browser automation with official Circle publishing APIs when available.
-- Add hosted deployment and public demo URL.
+- Persist hosted state in Vercel Postgres, Neon, Supabase, or Upstash.
+- Replace webhook/browser publishing with official Circle publishing APIs when available.
 - Add richer product evidence: reviews, availability, images, shipping, and price history.
-

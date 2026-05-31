@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from flask import Flask, jsonify, render_template, request
 
 from bot.services import AgentService
@@ -45,4 +47,5 @@ def collection():
 
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=3000, debug=False)
+    port = int(os.getenv("PORT", "3000"))
+    app.run(host="0.0.0.0", port=port, debug=False)

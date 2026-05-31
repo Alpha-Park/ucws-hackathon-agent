@@ -54,6 +54,20 @@ python -m bot.app
 
 Open [http://127.0.0.1:3000](http://127.0.0.1:3000).
 
+## Deploy Public Demo
+
+The repo includes `Procfile` and `render.yaml` for Python web deployment.
+
+Recommended Render settings:
+
+- Repository: `https://github.com/Alpha-Park/ucws-hackathon-agent`
+- Runtime: Python
+- Build command: `pip install -r requirements.txt`
+- Start command: `gunicorn "bot.app:app"`
+- Environment variable: `GENPARK_AGENT_DB=/tmp/agent_state.db`
+
+Render provides the public `PORT` automatically, and the app also falls back to port `3000` for local development.
+
 For API-only usage:
 
 ```bash

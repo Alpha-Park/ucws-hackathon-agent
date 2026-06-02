@@ -130,7 +130,9 @@ export default function Home() {
       <section className="hero">
         <nav className="topNav" aria-label="Product status">
           <div className="brandCluster">
-            <span className="brandMark">GP</span>
+            <span className="brandMark" aria-hidden="true">
+              <img src="/logo.jpg" alt="" />
+            </span>
             <div>
               <strong>GenPark Social Shopping Agent</strong>
               <span>UCWS Singapore Hackathon 2026</span>

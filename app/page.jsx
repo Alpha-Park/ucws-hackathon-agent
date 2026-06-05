@@ -113,8 +113,8 @@ export default function Home() {
     setPendingAction(data.pending_action || null);
     setAnswer(data.answer || data.error || "No answer returned.");
     setDraftPost(data.draft_post || data.post?.content || "");
-    setProducts(data.products || data.collection || []);
-    setCollection(data.collection || data.products || []);
+    setProducts((currentProducts) => data.products || data.collection || currentProducts);
+    setCollection((currentCollection) => data.collection || data.products || currentCollection);
     setPlan(data.plan || DEFAULT_PLAN);
     setToolCalls(data.tool_calls || []);
     setPost(data.post || null);
@@ -234,6 +234,23 @@ export default function Home() {
             <div className={`draft ${draftPost ? "" : "emptyDraft"}`}>
               {draftPost || "Run a prompt that asks for a Circle post to generate a draft."}
             </div>
+            {post ? (
+              <div className="postReceipt" aria-label="Approved post receipt">
+                <div>
+                  <strong>{post.status || "approved"}</strong>
+                  <span>
+                    {post.post_url
+                      ? "Published through the configured Circle webhook."
+                      : "Approved draft saved. No fake publish was claimed."}
+                  </span>
+                </div>
+                {post.post_url ? (
+                  <a href={post.post_url} target="_blank" rel="noreferrer">
+                    Open post
+                  </a>
+                ) : null}
+              </div>
+            ) : null}
           </article>
         </div>
 

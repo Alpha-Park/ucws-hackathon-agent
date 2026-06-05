@@ -15,6 +15,21 @@ test("ranks remote worker products within budget", () => {
   assert.equal(products[0].id, "prod_007");
 });
 
+test("broadens narrow category results for work-from-home gift prompts", async () => {
+  const response = await processRequest({
+    userId: `test_user_${Date.now()}_broad`,
+    sessionId: "ranking",
+    message:
+      "Find a work-from-home gift under $220 and draft a Circle post asking friends to choose.",
+  });
+
+  assert.equal(response.constraints.budget, 220);
+  assert.equal(response.constraints.inferred_category, "Home & Living");
+  assert.equal(response.constraints.category, null);
+  assert.ok(response.tool_calls.some((call) => call.tool === "broaden_product_search"));
+  assert.equal(response.products[0].id, "prod_007");
+});
+
 test("creates pending Circle approval and does not fake publish", async () => {
   const userId = `test_user_${Date.now()}`;
   const sessionId = "approval";

@@ -521,6 +521,91 @@ textarea:focus {
   margin-top: 8px;
 }
 
+.agentAudit {
+  display: grid;
+  gap: 12px;
+}
+
+.auditTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.scoreBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  min-height: 34px;
+  border: 1px solid rgba(157, 255, 114, 0.42);
+  border-radius: 2px;
+  color: #071006;
+  background: var(--signal);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.auditMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.auditMeta span {
+  border: 1px solid #d1e6dc;
+  border-radius: 999px;
+  color: var(--green);
+  background: #e3f1ea;
+  font-size: 11px;
+  padding: 4px 8px;
+}
+
+.auditGroup {
+  display: grid;
+  gap: 7px;
+}
+
+.auditGroup strong {
+  font-size: 13px;
+}
+
+.auditGroup ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auditGroup li {
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: #fbfcf8;
+  color: #3f443c;
+  font-size: 12px;
+  line-height: 1.42;
+  padding: 9px;
+}
+
+.auditGroup li span,
+.auditGroup li small,
+.auditGroup li p {
+  display: block;
+}
+
+.auditGroup li small {
+  color: var(--green);
+  font-weight: 850;
+  margin-top: 3px;
+}
+
+.auditGroup li p {
+  color: var(--muted);
+  margin-top: 5px;
+}
+
 .productSection {
   margin-top: 26px;
 }

@@ -21,7 +21,7 @@ GenPark Social Shopping Agent turns a shopping intent into an executable social-
 - Tool use: search, ranking, collection persistence, Circle draft handoff, and optional publishing webhook.
 - Memory: the Vercel demo keeps per-session pending approvals, collections, posts, and traces in serverless memory.
 - Safety: the community post remains a draft until `confirm post`; missing Circle publishing setup returns `drafted_requires_setup` instead of fake success.
-- Evaluability: every response includes the plan, tool calls, products, constraints, draft, and pending action.
+- Evaluability: every response includes the plan, tool calls, products, constraints, draft, pending action, run id, observations, decision log, safety checks, next actions, and self-evaluation score.
 
 ## Demo Flow
 
@@ -38,6 +38,7 @@ Expected behavior:
 3. It saves the top candidates to the demo collection.
 4. It drafts a Circle post.
 5. It waits for `confirm post` before any publish attempt.
+6. It exposes an operator audit with observations, decisions, safety checks, and the next best action.
 
 If no Circle publishing webhook is configured, the confirmed handoff is saved as an approved draft with `drafted_requires_setup`. This is intentional: the project does not claim a real side effect happened unless it did.
 
@@ -82,6 +83,9 @@ Optional environment variable:
 - `draft_post`: proposed Circle post
 - `pending_action`: action requiring user confirmation
 - `next_action`: next instruction for the user
+- `scorecard`: self-evaluation of run completeness and safety
+- `safety_checks`: approval gates and no-fake-side-effect checks
+- `decision_log`: why the agent chose its top actions
 
 ## Architecture
 
@@ -92,6 +96,7 @@ flowchart LR
     Agent --> Catalog["Product Catalog + Ranker"]
     Agent --> Store["Serverless Memory Store"]
     Agent --> Circle["Approval-Gated Circle Webhook"]
+    Agent --> Audit["Self-Evaluation + Safety Checks"]
 ```
 
 The deterministic workflow powers the hackathon demo so judges can run the product without private API keys. The hosted demo is optimized for public Vercel deployment; production persistence should use a database such as Vercel Postgres, Neon, Supabase, or Upstash.
@@ -106,9 +111,11 @@ app/
   api/health/route.js     Runtime health endpoint
 lib/
   agent.js                Shopping-agent workflow orchestration
+  agentIntelligence.js    Objective, audit, safety, scorecard, next actions
   catalog.js              Intent parsing, budget inference, ranking
   products.js             Deterministic demo catalog
   store.js                Serverless in-memory sessions and traces
+  toolRegistry.js         Public tool contracts and side-effect policy
 tests/
   agent.test.mjs          Workflow tests
 ```
@@ -122,6 +129,8 @@ tests/
 - API Routes
 - Serverless
 - Agent Workflow
+- Tool Registry
+- Approval Gates
 
 ## Tests
 

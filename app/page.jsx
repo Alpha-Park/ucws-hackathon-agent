@@ -47,6 +47,13 @@ export default function Home() {
   const [collection, setCollection] = useState([]);
   const [plan, setPlan] = useState(DEFAULT_PLAN);
   const [toolCalls, setToolCalls] = useState([]);
+  const [observations, setObservations] = useState([]);
+  const [decisionLog, setDecisionLog] = useState([]);
+  const [safetyChecks, setSafetyChecks] = useState([]);
+  const [nextActions, setNextActions] = useState([]);
+  const [scorecard, setScorecard] = useState({ overall: 0, label: "not_run", checks: [] });
+  const [agentCard, setAgentCard] = useState(null);
+  const [runId, setRunId] = useState("");
   const [pendingAction, setPendingAction] = useState(null);
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -117,6 +124,13 @@ export default function Home() {
     setCollection((currentCollection) => data.collection || data.products || currentCollection);
     setPlan(data.plan || DEFAULT_PLAN);
     setToolCalls(data.tool_calls || []);
+    setObservations(data.observations || []);
+    setDecisionLog(data.decision_log || []);
+    setSafetyChecks(data.safety_checks || []);
+    setNextActions(data.next_actions || (data.next_action ? [data.next_action] : []));
+    setScorecard(data.scorecard || { overall: 0, label: "not_run", checks: [] });
+    setAgentCard(data.agent_card || null);
+    setRunId(data.run_id || "");
     setPost(data.post || null);
   }
 
@@ -288,6 +302,44 @@ export default function Home() {
               </article>
             )}
           </div>
+
+          <div className="traceDivider" />
+
+          <section className="agentAudit" aria-label="Agent audit">
+            <div className="auditTop">
+              <div>
+                <p className="sectionKicker">Operator Audit</p>
+                <h2>Self-check and next move</h2>
+              </div>
+              <span className="scoreBadge">{scorecard.overall || 0}/100</span>
+            </div>
+
+            <div className="auditMeta">
+              <span>{scorecard.label}</span>
+              <span>{agentCard?.autonomy_model || "supervised_operator"}</span>
+              {runId ? <span>{runId}</span> : null}
+            </div>
+
+            <AuditList title="Observations" items={observations} />
+            <AuditList title="Decisions" items={decisionLog} />
+
+            {safetyChecks.length ? (
+              <div className="auditGroup">
+                <strong>Safety</strong>
+                <ul>
+                  {safetyChecks.map((check) => (
+                    <li key={check.name}>
+                      <span>{check.name}</span>
+                      <small>{check.status}</small>
+                      <p>{check.detail}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <AuditList title="Next Actions" items={nextActions} />
+          </section>
         </aside>
       </section>
 
@@ -326,5 +378,22 @@ export default function Home() {
         </div>
       </section>
     </main>
+  );
+}
+
+function AuditList({ title, items }) {
+  if (!items?.length) return null;
+
+  return (
+    <div className="auditGroup">
+      <strong>{title}</strong>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

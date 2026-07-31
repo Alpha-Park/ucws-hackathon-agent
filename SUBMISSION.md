@@ -25,6 +25,7 @@ GenPark Social Shopping Agent converts one natural-language shopping intent into
 - It uses tools for search, ranking, collection persistence, Circle handoff, and optional publishing.
 - It keeps state for sessions, collections, pending approvals, posts, and traces.
 - It exposes its plan and tool calls for auditability.
+- It exposes run ids, observations, decision logs, safety checks, next actions, and a self-evaluation score.
 - It treats external side effects safely: no fake publish success.
 
 ## 60-Second Demo Script
@@ -35,8 +36,9 @@ GenPark Social Shopping Agent converts one natural-language shopping intent into
 4. Show the decision brief: products are ranked with budget and intent reasons.
 5. Show the Circle draft: the agent turns the shortlist into a community handoff.
 6. Show the execution receipt: plan and tool calls are visible.
-7. Click `Approve Draft`.
-8. Explain that without a Circle publishing webhook, the approved draft is saved as `drafted_requires_setup` instead of pretending it was posted.
+7. Show the operator audit: self-score, observations, decisions, safety gates, and next action.
+8. Click `Approve Draft`.
+9. Explain that without a Circle publishing webhook, the approved draft is saved as `drafted_requires_setup` instead of pretending it was posted.
 
 ## Suggested Demo Prompt
 
@@ -56,6 +58,7 @@ I need a globally useful gift for a remote worker under $220. Compare the best o
 
 - Runnable Next.js app deployable on Vercel.
 - Structured API responses with plan, tool calls, products, collection, draft, and pending action.
+- Tool registry, side-effect policy, run audit, and self-evaluation fields make behavior machine-evaluable.
 - Tests cover budget inference, ranking, pending approvals, and no fake publish.
 - README includes screenshot, run steps, Vercel deployment steps, architecture, API shape, and limitations.
 
